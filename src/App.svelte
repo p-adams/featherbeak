@@ -3,6 +3,10 @@
 </script>
 
 <main>
+  <section>
+    <h3>ChatBox</h3>
+    <h5>Powered by featherbeak</h5>
+  </section>
   <ChatBox/>
 </main>
 
@@ -14,5 +18,8 @@
 
   main {
     height: 100vh;
+  }
+  section {
+    text-align: center;
   }
 </style>
