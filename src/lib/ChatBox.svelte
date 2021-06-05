@@ -46,6 +46,11 @@
                 <p>loading chat...</p>
             {:then messages}
                 <ul>
+                <div class="chat-top">
+                    <div class="divider"/>
+                        <p>beginning of chat</p>
+                    <div class="divider"/>
+                </div>
                 {#each messages as message}
                     <li>
                        [{message.sender.username}]: {message.text}
@@ -82,6 +87,18 @@
         margin: 10px;
         border: 1px solid lightgray;
         background: whitesmoke;
+    }
+    .chat-window .chat-top { 
+        margin-bottom: 10px;
+        color: gray;
+    }
+    .chat-top .divider {
+        border-top: 1px dashed gray;
+    }
+    .chat-top p {
+        text-align: center;
+        padding: 0;
+        margin: 0;
     }
     .chat-container .chat-controls {
         display: flex;
