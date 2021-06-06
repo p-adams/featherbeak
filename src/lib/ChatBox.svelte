@@ -52,8 +52,11 @@
                     <div class="divider"/>
                 </div>
                 {#each messages as message}
-                    <li>
-                       [{message.sender.username}]: {message.text}
+                    <li class="{message.sender.username === 'F404' ? 'user-message' : ''}">
+                       {#if message.sender.username !== 'F404'}
+                            [{message.sender.username}]
+                       {/if}
+                        {message.text}
                     </li>
                 {/each}
                 </ul>
@@ -112,5 +115,11 @@
     ul {
         list-style: none;
         padding: 8px;
+    }
+    ul li {
+        margin-bottom: 10px;
+    }
+    .user-message {
+       text-align: right;
     }
 </style>
