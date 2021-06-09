@@ -1,15 +1,17 @@
 <script lang="ts">
 
-    import type { Message } from '../data-types/message'
+    import type { Message, Sender } from '../data-types/message'
+
+    let currentUser: Sender = {
+        id: '0001',
+        username: 'F404'
+    }
   
     let messages: Array<Message> = [
         {
             id: 'ca58c682-c5d3-11eb-8cb9-000000000000',
             text: "Hello",
-            sender: {
-                id: '0001',
-                username: 'F404'
-            }
+            sender: currentUser
         },
         {
             id: 'd897a1e4-c5d3-11eb-84a6-9078413a1e98',
@@ -22,10 +24,7 @@
         {
             id: 'e8f468f6-c5d3-11eb-84a6-9078413a1e98',
             text: "Oh, pretty good. How about you?",
-            sender: {
-                id: '0001',
-                username: 'F404'
-            }
+            sender: currentUser
         }
     ]
     function getMessages() {
