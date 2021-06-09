@@ -1,7 +1,7 @@
 <script lang="ts">
 
     import type { Message, Sender } from '../data-types/message'
-
+    let message = ""
     let currentUser: Sender = {
         id: '0001',
         username: 'F404'
@@ -65,7 +65,7 @@
 
         </div>
         <div class="chat-controls">
-            <textarea></textarea>
+            <textarea bind:value={message}></textarea>
             <button>Send</button>
         </div>
         
