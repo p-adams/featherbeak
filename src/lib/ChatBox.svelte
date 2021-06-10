@@ -8,6 +8,11 @@ import { afterUpdate, onMount } from 'svelte';
         id: '0001',
         username: 'F404'
     }
+
+    let currentUser2:Sender = {
+        id: '0002',
+        username: 'QWERTY43'
+    }
   
     let messages: Array<Message> = [
         {
@@ -18,10 +23,7 @@ import { afterUpdate, onMount } from 'svelte';
         {
             id: 'd897a1e4-c5d3-11eb-84a6-9078413a1e98',
             text: "Hey, how's it going?",
-            sender: {
-                id: '0002',
-                username: 'QWERTY43'
-            }
+            sender: currentUser2
         },
         {
             id: 'e8f468f6-c5d3-11eb-84a6-9078413a1e98',
@@ -63,8 +65,8 @@ import { afterUpdate, onMount } from 'svelte';
                     <div class="divider"/>
                 </div>
                 {#each messages as message}
-                    <li class="{message.sender.username === 'F404' ? 'user-message' : ''}">
-                       {#if message.sender.username !== 'F404'}
+                    <li class="{message.sender.id === currentUser.id ? 'user-message' : ''}">
+                       {#if message.sender.id !== currentUser.id}
                             [{message.sender.username}]
                        {/if}
                         {message.text}
