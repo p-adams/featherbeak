@@ -1,4 +1,6 @@
 <script lang="ts">
+import { afterUpdate, onMount } from 'svelte';
+
 
     import type { Message, Sender } from '../data-types/message'
     let message = ""
@@ -34,7 +36,17 @@
         const messages = await getMessages()
         return messages
     }
-   const loadingChat = loadChat()
+    function sendMessage() {
+        messages = [...messages, {
+            id: 'key',
+            text: message,
+            sender: currentUser,
+            timestamp: new Date()
+        }]
+        loadingChat = loadChat()
+        message = ""
+    }
+    let loadingChat = loadChat()
 </script>
 
 
@@ -62,11 +74,10 @@
             {:catch error}
                 <p>something went wrong: {error.message}</p>
             {/await}
-
         </div>
         <div class="chat-controls">
             <textarea bind:value={message}></textarea>
-            <button>Send</button>
+            <button disabled={!message} on:click={sendMessage}>Send</button>
         </div>
         
     </div>
