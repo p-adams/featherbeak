@@ -1,43 +1,17 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import type { Message } from "src/data-types/message";
 
-  import type { Message, Sender } from "../data-types/message";
+  import { onMount } from "svelte";
+  import {
+    messages as messagesFromApi,
+    currentUser,
+    loadChat,
+  } from "../api/message";
+  let messages = messagesFromApi;
   let message = "";
   let textarea: HTMLTextAreaElement;
-  let currentUser: Sender = {
-    id: "0001",
-    username: "F404",
-  };
+  let loadingChat: Promise<Message[]>;
 
-  let currentUser2: Sender = {
-    id: "0002",
-    username: "QWERTY43",
-  };
-
-  let messages: Array<Message> = [
-    {
-      id: "ca58c682-c5d3-11eb-8cb9-000000000000",
-      text: "Hello",
-      sender: currentUser,
-    },
-    {
-      id: "d897a1e4-c5d3-11eb-84a6-9078413a1e98",
-      text: "Hey, how's it going?",
-      sender: currentUser2,
-    },
-    {
-      id: "e8f468f6-c5d3-11eb-84a6-9078413a1e98",
-      text: "Oh, pretty good. How about you?",
-      sender: currentUser,
-    },
-  ];
-  function getMessages() {
-    return messages;
-  }
-  async function loadChat() {
-    const messages = await getMessages();
-    return messages;
-  }
   function handleKeyup(e) {
     if (e.code === "Enter") {
       sendMessage();
@@ -56,10 +30,10 @@
     loadingChat = loadChat();
     message = "";
   }
-  let loadingChat = loadChat();
   onMount(() => {
     textarea.focus();
   });
+  loadingChat = loadChat();
 
 </script>
 
