@@ -12,8 +12,7 @@
   let activeMessages: Message[] = [];
   let message = "";
   let textarea: HTMLTextAreaElement;
-  let loadingChat: Message;
-  let c = 0;
+  let key = 0;
 
   function handleKeyup(e) {
     if (e.code === "Enter") {
@@ -21,7 +20,7 @@
     }
   }
   function sendMessage() {
-    let id = "key" + c++;
+    let id = `key ${key++}`;
     sendMessageToApi({
       id,
       text: message,
