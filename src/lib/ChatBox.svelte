@@ -14,8 +14,10 @@
   let textarea: HTMLTextAreaElement;
   let key = 0;
 
-  onMount(() => {
+  onMount(async () => {
     textarea.focus();
+    let chat = await loadChat();
+    activeMessages = [...chat];
   });
 
   function handleKeyup(e) {
@@ -47,15 +49,6 @@
         <div class="divider" />
       </div>
       <ul>
-        {#await loadChat()}
-          <p>loading chat...</p>
-        {:then messages}
-          {#each messages as message}
-            <ChatMessage {message} {currentUser} />
-          {/each}
-        {:catch error}
-          <p>something went wrong: {error.message}</p>
-        {/await}
         {#each activeMessages as message}
           <ChatMessage {message} {currentUser} />
         {/each}

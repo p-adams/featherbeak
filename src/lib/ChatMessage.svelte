@@ -6,7 +6,7 @@
 
 </script>
 
-<li class={message.sender.id === currentUser.id ? "user-message" : ""}>
+<li class={message.sender.id === currentUser.id ? "current-user-message" : ""}>
   {#if message.sender.id !== currentUser.id}
     [{message.sender.username}]
   {/if}
@@ -17,7 +17,7 @@
   li {
     margin-bottom: 10px;
   }
-  .user-message {
+  .current-user-message {
     text-align: right;
   }
 
