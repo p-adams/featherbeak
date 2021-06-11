@@ -1,16 +1,19 @@
 <script lang="ts">
+  import ChatMessage from "./ChatMessage.svelte";
   import type { Message } from "src/data-types/message";
 
   import { onMount } from "svelte";
   import {
-    messages as messagesFromApi,
     currentUser,
     loadChat,
+    sendMessageToApi,
+    getMessageById,
   } from "../api/message";
-  let messages = messagesFromApi;
+  let activeMessages: Message[] = [];
   let message = "";
   let textarea: HTMLTextAreaElement;
-  let loadingChat: Promise<Message[]>;
+  let loadingChat: Message;
+  let c = 0;
 
   function handleKeyup(e) {
     if (e.code === "Enter") {
@@ -18,51 +21,46 @@
     }
   }
   function sendMessage() {
-    messages = [
-      ...messages,
-      {
-        id: "key",
-        text: message,
-        sender: currentUser,
-        timestamp: new Date(),
-      },
-    ];
-    loadingChat = loadChat();
-    message = "";
+    let id = "key" + c++;
+    sendMessageToApi({
+      id,
+      text: message,
+      sender: currentUser,
+      timestamp: new Date(),
+    }).then(async () => {
+      activeMessages = [...activeMessages, await getMessageById(id)];
+      message = "";
+    });
   }
   onMount(() => {
     textarea.focus();
   });
-  loadingChat = loadChat();
+  let loadingChatHistory = loadChat();
 
 </script>
 
 <div class="chat-box">
   <div class="chat-container">
     <div class="chat-window">
-      {#await loadingChat}
-        <p>loading chat...</p>
-      {:then messages}
-        <ul>
-          <div class="chat-top">
-            <div class="divider" />
-            <p>beginning of chat</p>
-            <div class="divider" />
-          </div>
+      <div class="chat-top">
+        <div class="divider" />
+        <p>beginning of chat</p>
+        <div class="divider" />
+      </div>
+      <ul>
+        {#await loadingChatHistory}
+          <p>loading chat...</p>
+        {:then messages}
           {#each messages as message}
-            <li
-              class={message.sender.id === currentUser.id ? "user-message" : ""}
-            >
-              {#if message.sender.id !== currentUser.id}
-                [{message.sender.username}]
-              {/if}
-              {message.text}
-            </li>
+            <ChatMessage {message} {currentUser} />
           {/each}
-        </ul>
-      {:catch error}
-        <p>something went wrong: {error.message}</p>
-      {/await}
+        {:catch error}
+          <p>something went wrong: {error.message}</p>
+        {/await}
+        {#each activeMessages as message}
+          <ChatMessage {message} {currentUser} />
+        {/each}
+      </ul>
     </div>
 
     <div class="chat-controls">

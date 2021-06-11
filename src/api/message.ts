@@ -32,6 +32,24 @@ function getMessagesFromApi(): Promise<Message[]> {
     setTimeout(resolve, 200, messages);
   });
 }
+
+export function getMessageById(id: string): Promise<Message> {
+  return new Promise((resolve) => {
+    setTimeout(
+      resolve,
+      200,
+      messages.find((message) => message.id === id)
+    );
+  });
+}
+
+export function sendMessageToApi(message: Message) {
+  messages.push(message);
+  return new Promise((resolve) => {
+    setTimeout(resolve, 200, messages);
+  });
+}
+
 export async function loadChat() {
   const messages = await getMessagesFromApi();
   return messages;
