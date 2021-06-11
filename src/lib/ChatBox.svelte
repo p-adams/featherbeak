@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { afterUpdate, onMount } from "svelte";
+  import { onMount } from "svelte";
 
   import type { Message, Sender } from "../data-types/message";
   let message = "";
+  let textarea: HTMLTextAreaElement;
   let currentUser: Sender = {
     id: "0001",
     username: "F404",
@@ -37,6 +38,11 @@
     const messages = await getMessages();
     return messages;
   }
+  function handleKeyup(e) {
+    if (e.code === "Enter") {
+      sendMessage();
+    }
+  }
   function sendMessage() {
     messages = [
       ...messages,
@@ -51,6 +57,9 @@
     message = "";
   }
   let loadingChat = loadChat();
+  onMount(() => {
+    textarea.focus();
+  });
 
 </script>
 
@@ -83,7 +92,11 @@
     </div>
 
     <div class="chat-controls">
-      <textarea bind:value={message} />
+      <textarea
+        bind:this={textarea}
+        bind:value={message}
+        on:keyup={handleKeyup}
+      />
       <button disabled={!message} on:click={sendMessage}>Send</button>
     </div>
   </div>
