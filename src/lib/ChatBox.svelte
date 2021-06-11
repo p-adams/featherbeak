@@ -116,11 +116,5 @@
     list-style: none;
     padding: 8px;
   }
-  ul li {
-    margin-bottom: 10px;
-  }
-  .user-message {
-    text-align: right;
-  }
 
 </style>
