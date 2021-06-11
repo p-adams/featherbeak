@@ -46,7 +46,7 @@ export function getMessageById(id: string): Promise<Message> {
 export function sendMessageToApi(message: Message) {
   messages.push(message);
   return new Promise((resolve) => {
-    setTimeout(resolve, 200, messages);
+    setTimeout(resolve, 200, { status: "201" });
   });
 }
 
