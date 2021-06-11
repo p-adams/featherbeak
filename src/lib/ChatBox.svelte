@@ -14,6 +14,10 @@
   let textarea: HTMLTextAreaElement;
   let key = 0;
 
+  onMount(() => {
+    textarea.focus();
+  });
+
   function handleKeyup(e) {
     if (e.code === "Enter") {
       sendMessage();
@@ -31,10 +35,6 @@
       message = "";
     });
   }
-  onMount(() => {
-    textarea.focus();
-  });
-  let loadingChatHistory = loadChat();
 
 </script>
 
@@ -47,7 +47,7 @@
         <div class="divider" />
       </div>
       <ul>
-        {#await loadingChatHistory}
+        {#await loadChat()}
           <p>loading chat...</p>
         {:then messages}
           {#each messages as message}
