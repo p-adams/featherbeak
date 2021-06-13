@@ -42,6 +42,9 @@
 
 <div class="chat-box">
   <div class="chat-container">
+    <div class="chat-header">
+      <span>🦜</span>
+    </div>
     <div class="chat-window">
       <div class="chat-top">
         <div class="divider" />
@@ -55,13 +58,16 @@
       </ul>
     </div>
 
-    <div class="chat-controls">
-      <textarea
-        bind:this={textarea}
-        bind:value={message}
-        on:keyup={handleKeyup}
-      />
-      <button disabled={!message} on:click={sendMessage}>Send</button>
+    <div class="chat-controls-container">
+      <div class="chat-toolbar">toolbar</div>
+      <div class="chat-controls">
+        <textarea
+          bind:this={textarea}
+          bind:value={message}
+          on:keyup={handleKeyup}
+        />
+        <button disabled={!message} on:click={sendMessage}>Send</button>
+      </div>
     </div>
   </div>
 </div>
@@ -73,22 +79,28 @@
     justify-content: center;
   }
   .chat-box .chat-container {
-    border: 1px solid gray;
+    display: grid;
+    border: 1px solid lightgray;
     border-radius: 4px;
-    height: 450px;
-    width: 524px;
+    height: 430px;
+    width: 350px;
   }
   .chat-container .chat-window {
-    height: 75%;
-    margin: 10px;
-    border: 1px solid lightgray;
+    height: 300px;
     background: whitesmoke;
+  }
+  .chat-header {
+    height: 50px;
+    border-bottom: 1px solid lightgray;
+    box-shadow: 0px 10px 16px lightgray;
+    margin-bottom: 2px;
   }
   .chat-window .chat-top {
     margin-bottom: 10px;
     color: gray;
   }
   .chat-top .divider {
+    margin-top: 2px;
     border-top: 1px dashed gray;
   }
   .chat-top p {
@@ -96,14 +108,26 @@
     padding: 0;
     margin: 0;
   }
-  .chat-container .chat-controls {
+  .chat-container .chat-controls-container {
+    align-self: end;
+    border-top: 1px solid lightgray;
+    box-shadow: 0px 10px 12px lightgray;
+  }
+  .chat-controls-container .chat-toolbar {
+    padding: 4px;
+  }
+  .chat-controls-container .chat-controls {
     display: flex;
     justify-content: space-between;
-    margin: 10px;
+    padding: 4px;
   }
   .chat-controls textarea {
     width: 84%;
     resize: none;
+    border: none;
+  }
+  .chat-controls button {
+    border: 1px solid lightgray;
   }
   ul {
     list-style: none;
