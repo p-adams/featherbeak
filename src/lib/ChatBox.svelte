@@ -93,7 +93,6 @@
     height: 50px;
     border-bottom: 1px solid lightgray;
     box-shadow: 0px 10px 16px lightgray;
-    margin-bottom: 2px;
   }
   .chat-window .chat-top {
     margin-bottom: 10px;
