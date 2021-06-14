@@ -15,7 +15,11 @@
 
 <style>
   li {
+    font-size: 12px;
     margin-bottom: 10px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    padding: 4px;
   }
   .current-user-message {
     text-align: right;
