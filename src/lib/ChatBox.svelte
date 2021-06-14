@@ -82,7 +82,7 @@
     display: grid;
     border: 1px solid lightgray;
     border-radius: 4px;
-    height: 430px;
+    height: 440px;
     width: 350px;
   }
   .chat-container .chat-window {
