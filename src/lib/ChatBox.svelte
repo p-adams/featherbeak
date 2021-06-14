@@ -51,7 +51,7 @@
         <p>beginning of chat</p>
         <div class="divider" />
       </div>
-      <ul>
+      <ul class="message-list">
         {#each activeMessages as message}
           <ChatMessage {message} {currentUser} />
         {/each}
@@ -86,8 +86,10 @@
     width: 350px;
   }
   .chat-container .chat-window {
+    display: grid;
     height: 300px;
     background: whitesmoke;
+    overflow-y: scroll;
   }
   .chat-header {
     height: 50px;
@@ -106,6 +108,10 @@
     text-align: center;
     padding: 0;
     margin: 0;
+  }
+
+  .chat-window .message-list {
+    align-self: end;
   }
   .chat-container .chat-controls-container {
     align-self: end;
