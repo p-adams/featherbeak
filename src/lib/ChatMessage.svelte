@@ -26,7 +26,6 @@
   .current-user-message {
     margin-left: auto;
     margin-right: 0;
-    width: 45%;
   }
 
 </style>
