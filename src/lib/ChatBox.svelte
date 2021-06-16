@@ -47,7 +47,6 @@
     </div>
     <div class="chat-window">
       <div class="chat-top">
-        <div class="divider" />
         <p>beginning of chat</p>
         <div class="divider" />
       </div>
@@ -102,12 +101,13 @@
   }
   .chat-top .divider {
     margin-top: 2px;
-    border-top: 1px dashed gray;
+    border-bottom: 1px dashed gray;
   }
   .chat-top p {
     text-align: center;
     padding: 0;
     margin: 0;
+    font-size: 10px;
   }
 
   .chat-window .message-list {

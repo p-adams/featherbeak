@@ -16,13 +16,17 @@
 <style>
   li {
     font-size: 12px;
+    text-align: left;
     margin-bottom: 10px;
     border: 1px solid lightgray;
     border-radius: 6px;
     padding: 4px;
+    width: 45%;
   }
   .current-user-message {
-    text-align: right;
+    margin-left: auto;
+    margin-right: 0;
+    width: 45%;
   }
 
 </style>
