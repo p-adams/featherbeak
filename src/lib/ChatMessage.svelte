@@ -19,11 +19,13 @@
     font-size: 12px;
     text-align: left;
     margin-bottom: 10px;
-    border: 1px solid lightgray;
     border-radius: 6px;
     padding: 4px;
+    background: lightgray;
   }
   .current-user-message {
+    background: skyblue;
+    color: white;
     margin-left: auto;
     margin-right: 0;
   }

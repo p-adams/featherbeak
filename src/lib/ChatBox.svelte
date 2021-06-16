@@ -79,8 +79,7 @@
   }
   .chat-box .chat-container {
     display: grid;
-    border: 1px solid lightgray;
-    border-radius: 4px;
+    border: 1px solid #ededed;
     height: 440px;
     width: 350px;
   }
@@ -88,7 +87,7 @@
     display: grid;
     height: 300px;
     background: whitesmoke;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   .chat-header {
     height: 50px;
@@ -96,6 +95,7 @@
     box-shadow: 0px 10px 16px lightgray;
   }
   .chat-window .chat-top {
+    margin-top: 10px;
     margin-bottom: 10px;
     color: gray;
   }
