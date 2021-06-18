@@ -44,6 +44,10 @@
   <div class="chat-container">
     <div class="chat-header">
       <span>🦜</span>
+      <div>
+        <button>-</button>
+        <button>x</button>
+      </div>
     </div>
     <div class="chat-window">
       <div class="chat-top">
@@ -90,9 +94,19 @@
     overflow-y: auto;
   }
   .chat-header {
+    display: flex;
+    justify-content: space-between;
     height: 50px;
     border-bottom: 1px solid lightgray;
     box-shadow: 0px 10px 16px lightgray;
+    padding: 10px;
+  }
+  .chat-header button {
+    border: none;
+    cursor: pointer;
+  }
+  .chat-header button:hover {
+    border: 1px solid lightskyblue;
   }
   .chat-window .chat-top {
     margin-top: 10px;
