@@ -42,7 +42,10 @@
 <div class="chat-box">
   <div class="chat-container">
     <div class="chat-header">
-      <span>🦜</span>
+      <div class="hero-header">
+        <span>🦜</span>
+        <p>featherbeak</p>
+      </div>
       <div>
         <button>-</button>
         <button>x</button>
@@ -54,7 +57,7 @@
           <input placeholder="email" />
           <input placeholder="subject" />
           <textarea placeholder="enter details" />
-          <button>Sign In</button>
+          <button>Chat</button>
         </div>
       </div>
       <div class="chat-top">
@@ -119,6 +122,17 @@
     border-bottom: 1px solid lightgray;
     box-shadow: 0px 10px 16px lightgray;
     padding: 10px;
+  }
+  .chat-header .hero-header {
+    display: flex;
+  }
+
+  .hero-header p {
+    font-weight: bold;
+    color: slategray;
+    font-size: 12px;
+    padding-left: 4px;
+    margin: 0;
   }
   .chat-header button {
     border: none;
