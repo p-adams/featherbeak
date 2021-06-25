@@ -1,12 +1,10 @@
 <script lang="ts">
   import ChatBox from "./lib/ChatBox.svelte";
-
 </script>
 
 <main>
   <section>
-    <h3>ChatBox</h3>
-    <h5>Powered by featherbeak 🦜</h5>
+    <h3>ChatBox Demo</h3>
   </section>
   <ChatBox />
 </main>
@@ -23,5 +21,4 @@
   section {
     text-align: center;
   }
-
 </style>

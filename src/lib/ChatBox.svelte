@@ -44,7 +44,7 @@
     <div class="chat-header">
       <div class="hero-header">
         <span>🦜</span>
-        <p>featherbeak</p>
+        <p>Powered by featherbeak</p>
       </div>
       <div>
         <button>-</button>
