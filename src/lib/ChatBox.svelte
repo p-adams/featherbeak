@@ -37,7 +37,6 @@
       message = "";
     });
   }
-
 </script>
 
 <div class="chat-box">
@@ -50,6 +49,14 @@
       </div>
     </div>
     <div class="chat-window">
+      <div class="sign-in-screen">
+        <div class="container">
+          <input placeholder="email" />
+          <input placeholder="subject" />
+          <textarea placeholder="enter details" />
+          <button>Sign In</button>
+        </div>
+      </div>
       <div class="chat-top">
         <p>beginning of chat</p>
         <div class="divider" />
@@ -92,6 +99,18 @@
     height: 300px;
     background: whitesmoke;
     overflow-y: auto;
+  }
+  .chat-window .sign-in-screen {
+    position: absolute;
+    z-index: 1;
+    height: 390px;
+    width: 350px;
+    background: whitesmoke;
+  }
+  .sign-in-screen .container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
   }
   .chat-header {
     display: flex;
@@ -152,5 +171,4 @@
     list-style: none;
     padding: 8px;
   }
-
 </style>
