@@ -1,15 +1,27 @@
-import Hapi from "@hapi/hapi";
+import Hapi, { Request } from "@hapi/hapi";
+import type { Message } from "../data-types/message";
+import { loadChat, newMessage } from "./api";
 
 const init = async () => {
   const server = Hapi.server({
-    port: 3000,
+    port: 3001,
     host: "localhost",
   });
   server.route({
     method: "GET",
     path: "/",
-    handler: (request: any, h: any) => {
-      return "Hello World!!";
+    handler: async (request: any, h: any) => {
+      const messages = await loadChat();
+      return JSON.stringify(messages);
+    },
+  });
+  server.route({
+    method: "PUT",
+    path: "/",
+    handler: async (request: Request, h: any) => {
+      const message = request.payload as Message;
+      await newMessage(message);
+      return message;
     },
   });
   await server.start();

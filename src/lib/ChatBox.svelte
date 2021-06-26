@@ -22,7 +22,7 @@
 
   onMount(async () => {
     textarea.focus();
-    emailInput.focus();
+    emailInput?.focus();
     let chat = await loadChat();
     activeMessages = [...chat];
   });
@@ -59,22 +59,24 @@
       </div>
     </div>
     <div class="chat-window">
-      <div class="sign-in-screen">
-        {#if signInFailed}
-          <div class="error-alert">
-            <p>{errorMessage["emailRequired"]}</p>
+      {#if false}
+        <div class="sign-in-screen">
+          {#if signInFailed}
+            <div class="error-alert">
+              <p>{errorMessage["emailRequired"]}</p>
+            </div>
+          {/if}
+          <div class="container">
+            <label for="email"> email </label>
+            <input bind:this={emailInput} />
+            <label for="subject">subject</label>
+            <input />
+            <label for="message">message</label>
+            <textarea />
+            <button>Chat</button>
           </div>
-        {/if}
-        <div class="container">
-          <label for="email"> email </label>
-          <input bind:this={emailInput} />
-          <label for="subject">subject</label>
-          <input />
-          <label for="message">message</label>
-          <textarea />
-          <button>Chat</button>
         </div>
-      </div>
+      {/if}
       <div class="chat-top">
         <p>beginning of chat</p>
         <div class="divider" />

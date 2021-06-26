@@ -1,4 +1,4 @@
-import type { Message, Sender } from "../data-types/message";
+import type { Message, Sender } from "../../data-types/message";
 export let currentUser: Sender = {
   id: "0001",
   username: "F404",
@@ -43,17 +43,11 @@ export function getMessageById(id: string): Promise<Message> {
   });
 }
 
-export function sendMessageToApi(message: Message) {
-  return fetch("/api", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(message),
-  });
+export function newMessage(message: Message) {
+  messages.push(message);
 }
 
 export async function loadChat() {
-  const messages = await fetch("/api")
-    .then((res) => res.json())
-    .catch((err) => console.error(err.message));
+  const messages = await getMessagesFromApi();
   return messages;
 }
