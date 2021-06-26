@@ -13,6 +13,11 @@
   let message = "";
   let textarea: HTMLTextAreaElement;
   let key = 0;
+  let signInFailed = false;
+  let errorMessage = {
+    invalidEmail: "invalid email",
+    emailRequired: "email required*",
+  };
 
   onMount(async () => {
     textarea.focus();
@@ -53,6 +58,11 @@
     </div>
     <div class="chat-window">
       <div class="sign-in-screen">
+        {#if signInFailed}
+          <div class="error-alert">
+            <p>{errorMessage["emailRequired"]}</p>
+          </div>
+        {/if}
         <div class="container">
           <input placeholder="email" />
           <input placeholder="subject" />
@@ -110,10 +120,26 @@
     width: 350px;
     background: whitesmoke;
   }
+  .sign-in-screen .error-alert {
+    border: 2px solid #990000;
+    color: red;
+    font-size: 10px;
+    padding: 0 10px 0 10px;
+  }
   .sign-in-screen .container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
     padding: 10px;
+    margin-top: 60px;
+  }
+
+  .container button {
+    margin-top: 40px;
+  }
+  .container textarea {
+    resize: none;
   }
   .chat-header {
     display: flex;
