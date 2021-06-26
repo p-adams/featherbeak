@@ -3,12 +3,7 @@
   import type { Message } from "src/data-types/message";
 
   import { onMount } from "svelte";
-  import {
-    currentUser,
-    loadChat,
-    sendMessageToApi,
-    getMessageById,
-  } from "../api/message";
+  import { currentUser, loadChat, dispatch, receive } from "../api/message";
   let activeMessages: Message[] = [];
   let message = "";
   let textarea: HTMLTextAreaElement;
@@ -33,14 +28,11 @@
     }
   }
   function sendMessage() {
-    let id = `key ${key++}`;
-    sendMessageToApi({
-      id,
+    dispatch({
       text: message,
       sender: currentUser,
-      timestamp: new Date(),
-    }).then(async () => {
-      activeMessages = [...activeMessages, await getMessageById(id)];
+    }).then(async (id) => {
+      activeMessages = [...activeMessages, await receive(id)];
       message = "";
     });
   }

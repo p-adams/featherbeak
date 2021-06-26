@@ -1,6 +1,6 @@
 import Hapi, { Request } from "@hapi/hapi";
 import type { Message } from "../data-types/message";
-import { loadChat, newMessage } from "./api";
+import { getMessageById, loadChat, newMessage } from "./api";
 
 const init = async () => {
   const server = Hapi.server({
@@ -16,12 +16,21 @@ const init = async () => {
     },
   });
   server.route({
+    method: "GET",
+    path: "/receive/{id}",
+    handler: (request: Request, h: any) => {
+      const id = request.params.id;
+      const message = getMessageById(id);
+      return message;
+    },
+  });
+  server.route({
     method: "PUT",
-    path: "/",
+    path: "/dispatch",
     handler: async (request: Request, h: any) => {
       const message = request.payload as Message;
-      await newMessage(message);
-      return message;
+      const id = await newMessage(message);
+      return JSON.stringify({ id });
     },
   });
   await server.start();

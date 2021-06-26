@@ -9,49 +9,27 @@ let currentUser2: Sender = {
   username: "QWERTY43",
 };
 
-export let messages: Array<Message> = [
-  {
-    id: "ca58c682-c5d3-11eb-8cb9-000000000000",
-    text: "Hello",
-    sender: currentUser,
-  },
-  {
-    id: "d897a1e4-c5d3-11eb-84a6-9078413a1e98",
-    text: "Hey, how's it going?",
-    sender: currentUser2,
-  },
-  {
-    id: "e8f468f6-c5d3-11eb-84a6-9078413a1e98",
-    text: "Oh, pretty good. How about you?",
-    sender: currentUser,
-  },
-];
-
-function getMessagesFromApi(): Promise<Message[]> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 200, messages);
-  });
+export async function receive(id: string | number): Promise<Message> {
+  const message = await fetch(`/api/receive/${id}`)
+    .then((res) => res.json())
+    .catch((err) => console.error(err));
+  return message;
 }
 
-export function getMessageById(id: string): Promise<Message> {
-  return new Promise((resolve) => {
-    setTimeout(
-      resolve,
-      200,
-      messages.find((message) => message.id === id)
-    );
-  });
-}
-
-export function sendMessageToApi(message: Message) {
-  return fetch("/api", {
+export async function dispatch(
+  message: Partial<Message>
+): Promise<string | number> {
+  const { id } = await fetch("/api/dispatch", {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(message),
-  });
+  })
+    .then((res) => res.json())
+    .catch((err) => console.error(err.message));
+  return id;
 }
 
-export async function loadChat() {
+export async function loadChat(): Promise<Message[]> {
   const messages = await fetch("/api")
     .then((res) => res.json())
     .catch((err) => console.error(err.message));

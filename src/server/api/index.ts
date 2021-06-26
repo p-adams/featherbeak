@@ -1,3 +1,5 @@
+import cuid from "cuid";
+
 import type { Message, Sender } from "../../data-types/message";
 export let currentUser: Sender = {
   id: "0001",
@@ -33,18 +35,18 @@ function getMessagesFromApi(): Promise<Message[]> {
   });
 }
 
-export function getMessageById(id: string): Promise<Message> {
-  return new Promise((resolve) => {
-    setTimeout(
-      resolve,
-      200,
-      messages.find((message) => message.id === id)
-    );
-  });
+export function getMessageById(id: string | number) {
+  return messages.find((message) => message.id === id);
 }
 
 export function newMessage(message: Message) {
-  messages.push(message);
+  const messageWithMetadata = {
+    ...message,
+    id: cuid(),
+    timestamp: new Date(),
+  };
+  messages.push(messageWithMetadata);
+  return messageWithMetadata.id;
 }
 
 export async function loadChat() {

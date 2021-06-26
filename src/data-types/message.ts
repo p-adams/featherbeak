@@ -7,7 +7,7 @@ interface Receiver {
   username;
 }
 export interface Message {
-  id: string;
+  id: string | number;
   timestamp?: Date;
   text: string;
   sender?: Sender;
