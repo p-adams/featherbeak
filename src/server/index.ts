@@ -1,4 +1,4 @@
-const Hapi = require("@hapi/hapi");
+import Hapi from "@hapi/hapi";
 
 const init = async () => {
   const server = Hapi.server({
@@ -8,8 +8,8 @@ const init = async () => {
   server.route({
     method: "GET",
     path: "/",
-    handler: (request, h) => {
-      return "Hello World!";
+    handler: (request: any, h: any) => {
+      return "Hello World!!";
     },
   });
   await server.start();
