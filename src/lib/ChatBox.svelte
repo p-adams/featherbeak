@@ -64,9 +64,12 @@
           </div>
         {/if}
         <div class="container">
-          <input placeholder="email" />
-          <input placeholder="subject" />
-          <textarea placeholder="enter details" />
+          <label for="email"> email </label>
+          <input />
+          <label for="subject">subject</label>
+          <input />
+          <label for="message">message</label>
+          <textarea />
           <button>Chat</button>
         </div>
       </div>
@@ -140,6 +143,12 @@
   }
   .container textarea {
     resize: none;
+  }
+  .container label {
+    color: gray;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 2px;
   }
   .chat-header {
     display: flex;
