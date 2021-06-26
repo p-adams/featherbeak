@@ -12,6 +12,7 @@
   let activeMessages: Message[] = [];
   let message = "";
   let textarea: HTMLTextAreaElement;
+  let emailInput: HTMLInputElement;
   let key = 0;
   let signInFailed = false;
   let errorMessage = {
@@ -21,6 +22,7 @@
 
   onMount(async () => {
     textarea.focus();
+    emailInput.focus();
     let chat = await loadChat();
     activeMessages = [...chat];
   });
@@ -65,7 +67,7 @@
         {/if}
         <div class="container">
           <label for="email"> email </label>
-          <input />
+          <input bind:this={emailInput} />
           <label for="subject">subject</label>
           <input />
           <label for="message">message</label>
