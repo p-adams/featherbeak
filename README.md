@@ -4,7 +4,7 @@ An open-source live chat and support service dashboard built with Svelte.
 
 ### Getting started
 
-To run client locally
+To run client locally:
 
 ```
 npm install
