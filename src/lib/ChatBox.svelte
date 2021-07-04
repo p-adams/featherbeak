@@ -8,11 +8,15 @@
   let message = "";
   let textarea: HTMLTextAreaElement;
   let emailInput: HTMLInputElement;
-  let key = 0;
   let signInFailed = false;
-  let errorMessage = {
+  let errorMessage: {
+    invalidEmail: string;
+    emailRequired: string;
+    subjectRequired: string;
+  } = {
     invalidEmail: "invalid email",
     emailRequired: "email required*",
+    subjectRequired: "subject required",
   };
 
   onMount(async () => {
@@ -81,7 +85,7 @@
     </div>
 
     <div class="chat-controls-container">
-      <div class="chat-toolbar">toolbar</div>
+      <!-- TODO: impl for toolbar <div class="chat-toolbar">toolbar</div> -->
       <div class="chat-controls">
         <textarea
           bind:this={textarea}
@@ -207,7 +211,8 @@
   .chat-controls textarea {
     width: 84%;
     resize: none;
-    border: none;
+    border: 1px solid lightgray;
+    margin-right: 4px;
   }
   .chat-controls button {
     border: 1px solid lightgray;
