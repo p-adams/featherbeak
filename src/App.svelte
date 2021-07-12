@@ -1,5 +1,6 @@
 <script lang="ts">
   import ChatBox from "./lib/ChatBox.svelte";
+  import ChatFab from "./lib/ChatFab.svelte";
 </script>
 
 <main>
@@ -7,6 +8,7 @@
     <h3>ChatBox Demo</h3>
   </section>
   <ChatBox />
+  <ChatFab />
 </main>
 
 <style>
