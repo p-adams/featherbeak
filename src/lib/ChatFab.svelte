@@ -1,6 +1,6 @@
 <script lang="ts"></script>
 
-<div class="chat-fab-container">
+<div class="chat-fab-container" title="Open Live Chat">
   <span class="chat-logo">🦜</span>
 </div>
 
