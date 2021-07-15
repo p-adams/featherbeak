@@ -2,12 +2,13 @@
   import ChatMessage from "./ChatMessage.svelte";
   import type { Message } from "src/data-types/message";
 
-  import { onMount } from "svelte";
+  import { afterUpdate, onMount } from "svelte";
   import { currentUser, loadChat, dispatch, receive } from "../../api/message";
   let activeMessages: Message[] = [];
   let message = "";
   let textarea: HTMLTextAreaElement;
   let emailInput: HTMLInputElement;
+  let chatWindowBottom: HTMLLIElement;
   let signInFailed = false;
   let errorMessage: {
     invalidEmail: string;
@@ -24,6 +25,12 @@
     emailInput?.focus();
     let chat = await loadChat();
     activeMessages = [...chat];
+    scrollToBottom();
+  });
+
+  afterUpdate(() => {
+    // TODO: fix bug where any DOM update triggers immediate scroll to bottom behavior
+    scrollToBottom();
   });
 
   function handleKeyup(e) {
@@ -39,6 +46,10 @@
       activeMessages = [...activeMessages, await receive(id)];
       message = "";
     });
+  }
+
+  function scrollToBottom() {
+    chatWindowBottom.scrollIntoView({ behavior: "smooth" });
   }
 </script>
 
@@ -81,6 +92,7 @@
         {#each activeMessages as message}
           <ChatMessage {message} {currentUser} />
         {/each}
+        <li class="dummy" bind:this={chatWindowBottom} />
       </ul>
     </div>
 
