@@ -1,14 +1,14 @@
 <script lang="ts">
-  import ChatBox from "./lib/ChatBox.svelte";
-  import ChatFab from "./lib/ChatFab.svelte";
+  import ChatBox from "./lib/LiveChat/ChatBox.svelte";
+  import ChatFab from "./lib/LiveChat/ChatFab.svelte";
+  import LiveChat from "./lib/LiveChat/LiveChat.svelte";
 </script>
 
 <main>
   <section>
     <h3>ChatBox Demo</h3>
   </section>
-  <ChatBox />
-  <ChatFab />
+  <LiveChat />
 </main>
 
 <style>

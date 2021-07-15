@@ -3,7 +3,7 @@
   import type { Message } from "src/data-types/message";
 
   import { onMount } from "svelte";
-  import { currentUser, loadChat, dispatch, receive } from "../api/message";
+  import { currentUser, loadChat, dispatch, receive } from "../../api/message";
   let activeMessages: Message[] = [];
   let message = "";
   let textarea: HTMLTextAreaElement;
