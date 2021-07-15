@@ -20,6 +20,8 @@
     subjectRequired: "subject required",
   };
 
+  $: activeMessagesCount = activeMessages.length;
+
   onMount(async () => {
     textarea.focus();
     emailInput?.focus();
@@ -29,8 +31,9 @@
   });
 
   afterUpdate(() => {
-    // TODO: fix bug where any DOM update triggers immediate scroll to bottom behavior
-    scrollToBottom();
+    if (activeMessagesCount && message === "") {
+      scrollToBottom();
+    }
   });
 
   function handleKeyup(e) {
