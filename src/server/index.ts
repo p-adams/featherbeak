@@ -33,6 +33,13 @@ const init = async () => {
       return JSON.stringify({ id });
     },
   });
+  server.route({
+    method: "get",
+    path: "/dashboard",
+    handler: async (request: Request, h: any) => {
+      return JSON.stringify({ data: {} });
+    },
+  });
   await server.start();
   console.log("Server running on %s", server.info.uri);
 };
