@@ -18,7 +18,6 @@
     width: 100px;
     border-radius: 100%;
     border: 1px solid lightgray;
-    box-shadow: 2px 5px 2px lightgray;
     cursor: pointer;
   }
   .chat-fab-container .chat-logo {
@@ -28,6 +27,6 @@
     height: 110px;
     width: 110px;
     border-radius: 100%;
-    border: 2px solid lightblue;
+    box-shadow: 2px 5px 2px lightgray;
   }
 </style>
