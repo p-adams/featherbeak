@@ -1,6 +1,8 @@
-<script lang="ts"></script>
+<script lang="ts">
+  export let onFabClick;
+</script>
 
-<div class="chat-fab-container" title="Open Live Chat">
+<div on:click={onFabClick} class="chat-fab-container" title="Open Live Chat">
   <span class="chat-logo">🦜</span>
 </div>
 
