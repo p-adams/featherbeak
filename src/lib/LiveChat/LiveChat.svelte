@@ -1,7 +1,9 @@
 <script lang="ts">
   import ChatBox from "./ChatBox.svelte";
   import ChatFab from "./ChatFab.svelte";
-  // TODO: consider centralized data store
+  export let messages = [];
+  export let session = null;
+  // TODO: consider centralized data store for visibility state
   let show = false;
   let isMinimize = false;
   function showChat() {
