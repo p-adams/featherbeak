@@ -6,7 +6,7 @@
   <span class="chat-logo">🦜</span>
 </div>
 
-<style>
+<style lang="scss">
   .chat-fab-container {
     position: absolute;
     right: 0;
@@ -21,14 +21,14 @@
     border-radius: 100%;
     border: 1px solid lightgray;
     cursor: pointer;
-  }
-  .chat-fab-container .chat-logo {
-    font-size: 4rem;
-  }
-  .chat-fab-container:hover {
-    height: 110px;
-    width: 110px;
-    border-radius: 100%;
-    box-shadow: 2px 5px 2px lightgray;
+    .chat-logo {
+      font-size: 4rem;
+    }
+    &:hover {
+      height: 110px;
+      width: 110px;
+      border-radius: 100%;
+      box-shadow: 2px 5px 2px lightgray;
+    }
   }
 </style>
