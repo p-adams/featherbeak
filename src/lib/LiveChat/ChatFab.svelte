@@ -8,10 +8,6 @@
 
 <style lang="scss">
   .chat-fab-container {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin-right: 25px;
     display: flex;
     justify-content: center;
     align-items: center;

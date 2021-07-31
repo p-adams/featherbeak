@@ -115,6 +115,11 @@
 
 <style>
   .chat-box {
+    position: absolute;
+
+    right: 100px;
+
+    bottom: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -215,9 +220,7 @@
     border-top: 1px solid lightgray;
     box-shadow: 0px 10px 12px lightgray;
   }
-  .chat-controls-container .chat-toolbar {
-    padding: 4px;
-  }
+
   .chat-controls-container .chat-controls {
     display: flex;
     justify-content: space-between;

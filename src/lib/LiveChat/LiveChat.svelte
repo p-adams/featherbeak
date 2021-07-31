@@ -16,5 +16,16 @@
   function minimizeChat() {}
 </script>
 
-<ChatBox />
-<ChatFab onFabClick={showChat} />
+<div class="live-chat-container">
+  <ChatBox />
+  <ChatFab onFabClick={showChat} />
+</div>
+
+<style lang="scss">
+  .live-chat-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 25px;
+  }
+</style>
