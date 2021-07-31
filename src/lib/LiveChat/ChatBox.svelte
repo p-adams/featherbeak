@@ -113,130 +113,126 @@
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .chat-box {
     position: absolute;
-
     right: 100px;
-
     bottom: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .chat-box .chat-container {
-    display: grid;
-    border: 1px solid #ededed;
-    height: 440px;
-    width: 350px;
-  }
-  .chat-container .chat-window {
-    display: grid;
-    height: 300px;
-    background: whitesmoke;
-    overflow-y: auto;
-  }
-  .chat-window .sign-in-screen {
-    position: absolute;
-    z-index: 1;
-    height: 390px;
-    width: 350px;
-    background: whitesmoke;
-  }
-  .sign-in-screen .error-alert {
-    border: 2px solid #990000;
-    color: red;
-    font-size: 10px;
-    padding: 0 10px 0 10px;
-  }
-  .sign-in-screen .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 200px;
-    padding: 10px;
-    margin-top: 60px;
-  }
-
-  .container button {
-    margin-top: 40px;
-  }
-  .container textarea {
-    resize: none;
-  }
-  .container label {
-    color: gray;
-    font-weight: bold;
-    font-size: 10px;
-    padding: 2px;
-  }
-  .chat-header {
-    display: flex;
-    justify-content: space-between;
-    height: 50px;
-    border-bottom: 1px solid lightgray;
-    box-shadow: 0px 10px 16px lightgray;
-    padding: 10px;
-  }
-  .chat-header .hero-header {
-    display: flex;
-  }
-
-  .hero-header p {
-    font-weight: bold;
-    color: slategray;
-    font-size: 12px;
-    padding-left: 4px;
-    margin: 0;
-  }
-  .chat-header button {
-    border: none;
-    cursor: pointer;
-  }
-  .chat-header button:hover {
-    border: 1px solid lightskyblue;
-  }
-  .chat-window .chat-top {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: gray;
-  }
-  .chat-top .divider {
-    margin-top: 2px;
-    border-bottom: 1px dashed gray;
-  }
-  .chat-top p {
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    font-size: 10px;
-  }
-
-  .chat-window .message-list {
-    align-self: end;
-  }
-  .chat-container .chat-controls-container {
-    align-self: end;
-    border-top: 1px solid lightgray;
-    box-shadow: 0px 10px 12px lightgray;
-  }
-
-  .chat-controls-container .chat-controls {
-    display: flex;
-    justify-content: space-between;
-    padding: 4px;
-  }
-  .chat-controls textarea {
-    width: 84%;
-    resize: none;
-    border: 1px solid lightgray;
-    margin-right: 4px;
-  }
-  .chat-controls button {
-    border: 1px solid lightgray;
-  }
-  ul {
-    list-style: none;
-    padding: 8px;
+    ul {
+      list-style: none;
+      padding: 8px;
+    }
+    .chat-container {
+      display: grid;
+      border: 1px solid #ededed;
+      height: 440px;
+      width: 350px;
+      .chat-window {
+        display: grid;
+        height: 300px;
+        background: whitesmoke;
+        overflow-y: auto;
+        .sign-in-screen {
+          position: absolute;
+          z-index: 1;
+          height: 390px;
+          width: 350px;
+          background: whitesmoke;
+          .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 200px;
+            padding: 10px;
+            margin-top: 60px;
+            button {
+              margin-top: 40px;
+            }
+            textarea {
+              resize: none;
+            }
+            label {
+              color: gray;
+              font-weight: bold;
+              font-size: 10px;
+              padding: 2px;
+            }
+          }
+          .error-alert {
+            border: 2px solid #990000;
+            color: red;
+            font-size: 10px;
+            padding: 0 10px 0 10px;
+          }
+        }
+      }
+    }
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      height: 50px;
+      border-bottom: 1px solid lightgray;
+      box-shadow: 0px 10px 16px lightgray;
+      padding: 10px;
+      .hero-header {
+        display: flex;
+        p {
+          font-weight: bold;
+          color: slategray;
+          font-size: 12px;
+          padding-left: 4px;
+          margin: 0;
+        }
+      }
+      button {
+        border: none;
+        cursor: pointer;
+        &:hover {
+          border: 1px solid lightskyblue;
+        }
+      }
+    }
+    .chat-window {
+      .message-list {
+        align-self: end;
+      }
+      .chat-top {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: gray;
+        .divider {
+          margin-top: 2px;
+          border-bottom: 1px dashed gray;
+        }
+        p {
+          text-align: center;
+          padding: 0;
+          margin: 0;
+          font-size: 10px;
+        }
+      }
+    }
+    .chat-controls-container {
+      align-self: end;
+      border-top: 1px solid lightgray;
+      box-shadow: 0px 10px 12px lightgray;
+      .chat-controls {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px;
+        button {
+          border: 1px solid lightgray;
+        }
+      }
+      textarea {
+        width: 84%;
+        resize: none;
+        border: 1px solid lightgray;
+        margin-right: 4px;
+      }
+    }
   }
 </style>
