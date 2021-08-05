@@ -11,13 +11,17 @@
     // maximize chat box
     // otherwise, start a new chat session
     console.log("show");
+    show = !show;
   }
   function closeChat() {}
   function minimizeChat() {}
 </script>
 
 <div class="live-chat-container">
-  <ChatBox />
+  {#if show}
+    <ChatBox />
+  {/if}
+
   <ChatFab onFabClick={showChat} />
 </div>
 
@@ -25,7 +29,7 @@
   .live-chat-container {
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 10px;
     margin-right: 25px;
   }
 </style>

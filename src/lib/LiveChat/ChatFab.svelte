@@ -15,7 +15,8 @@
     height: 100px;
     width: 100px;
     border-radius: 100%;
-    border: 1px solid lightgray;
+    background-color: #a5d6a7;
+    opacity: 0.95;
     cursor: pointer;
     .chat-logo {
       font-size: 4rem;
@@ -24,7 +25,7 @@
       height: 110px;
       width: 110px;
       border-radius: 100%;
-      box-shadow: 2px 5px 2px lightgray;
+      box-shadow: 4px 4px 12px #43a047;
     }
   }
 </style>
