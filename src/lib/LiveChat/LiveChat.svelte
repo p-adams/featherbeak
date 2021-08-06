@@ -10,7 +10,6 @@
     // if chat session exists
     // maximize chat box
     // otherwise, start a new chat session
-    console.log("show");
     show = !show;
   }
   function closeChat() {}

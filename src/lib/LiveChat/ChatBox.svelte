@@ -57,125 +57,85 @@
 </script>
 
 <div class="chat-box">
-  <div class="chat-container">
-    <div class="chat-header">
-      <div class="hero-header">
-        <span>🦜</span>
-        <p>Powered by featherbeak</p>
-      </div>
-      <div>
-        <button>-</button>
-        <button>x</button>
-      </div>
+  <div class="chat-header">
+    <div class="hero-header">
+      <span>🦜</span>
+      <p>Powered by featherbeak</p>
     </div>
-    <div class="chat-window">
-      {#if false}
-        <div class="sign-in-screen">
-          {#if signInFailed}
-            <div class="error-alert">
-              <p>{errorMessage["emailRequired"]}</p>
-            </div>
-          {/if}
-          <div class="container">
-            <label for="email"> email </label>
-            <input bind:this={emailInput} />
-            <label for="subject">subject</label>
-            <input />
-            <label for="message">message</label>
-            <textarea />
-            <button>Chat</button>
-          </div>
-        </div>
-      {/if}
-      <div class="chat-top">
-        <p>beginning of chat</p>
-        <div class="divider" />
-      </div>
-      <ul class="message-list">
-        {#each activeMessages as message}
-          <ChatMessage {message} {currentUser} />
-        {/each}
-        <li class="dummy" bind:this={chatWindowBottom} />
-      </ul>
+    <div>
+      <button>-</button>
+      <button>x</button>
     </div>
+  </div>
 
-    <div class="chat-controls-container">
-      <!-- TODO: impl for toolbar <div class="chat-toolbar">toolbar</div> -->
-      <div class="chat-controls">
-        <textarea
-          bind:this={textarea}
-          bind:value={message}
-          on:keyup={handleKeyup}
-        />
-        <button disabled={!message} on:click={sendMessage}>Send</button>
+  <div class="chat-window">
+    {#if false}
+      <div class="sign-in-screen">
+        {#if signInFailed}
+          <div class="error-alert">
+            <p>{errorMessage["emailRequired"]}</p>
+          </div>
+        {/if}
+        <div class="container">
+          <label for="email"> email </label>
+          <input bind:this={emailInput} />
+          <label for="subject">subject</label>
+          <input />
+          <label for="message">message</label>
+          <textarea />
+          <button>Chat</button>
+        </div>
       </div>
+    {/if}
+    <div class="chat-top">
+      <p>beginning of chat</p>
+      <div class="divider" />
+    </div>
+    <ul class="message-list">
+      {#each activeMessages as message}
+        <ChatMessage {message} {currentUser} />
+      {/each}
+      <li class="dummy" bind:this={chatWindowBottom} />
+    </ul>
+  </div>
+  <div class="chat-controls-container">
+    <!-- TODO: impl for toolbar <div class="chat-toolbar">toolbar</div> -->
+    <div class="chat-controls">
+      <textarea
+        bind:this={textarea}
+        bind:value={message}
+        on:keyup={handleKeyup}
+      />
+      <button disabled={!message} on:click={sendMessage}>Send</button>
     </div>
   </div>
 </div>
 
 <style lang="scss">
+  $chat-box-height: 500px;
+  $chat-box-width: 400px;
   .chat-box {
     position: absolute;
-    right: 100px;
-    bottom: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    ul {
-      list-style: none;
-      padding: 8px;
-    }
-    .chat-container {
-      display: grid;
-      border: 1px solid #ededed;
-      height: 440px;
-      width: 350px;
-      .chat-window {
-        display: grid;
-        height: 300px;
-        background: whitesmoke;
-        overflow-y: auto;
-        .sign-in-screen {
-          position: absolute;
-          z-index: 1;
-          height: 390px;
-          width: 350px;
-          background: whitesmoke;
-          .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 200px;
-            padding: 10px;
-            margin-top: 60px;
-            button {
-              margin-top: 40px;
-            }
-            textarea {
-              resize: none;
-            }
-            label {
-              color: gray;
-              font-weight: bold;
-              font-size: 10px;
-              padding: 2px;
-            }
-          }
-          .error-alert {
-            border: 2px solid #990000;
-            color: red;
-            font-size: 10px;
-            padding: 0 10px 0 10px;
-          }
-        }
-      }
-    }
+    right: 10px;
+    bottom: 120px;
+    height: $chat-box-height;
+    width: $chat-box-width;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "chat-header"
+      "chat-window"
+      "chat-action-footer";
+
+    background-color: white;
     .chat-header {
+      grid-area: chat-header;
       display: flex;
       justify-content: space-between;
-      height: 50px;
+      height: 35px;
       border-bottom: 1px solid lightgray;
-      box-shadow: 0px 10px 16px lightgray;
+      box-shadow: 0px 4px 12px lightgray;
       padding: 10px;
       .hero-header {
         display: flex;
@@ -195,7 +155,16 @@
         }
       }
     }
+
     .chat-window {
+      grid-area: chat-window;
+      display: grid;
+      background: whitesmoke;
+      overflow-y: auto;
+      ul {
+        list-style: none;
+        padding: 8px;
+      }
       .message-list {
         align-self: end;
       }
@@ -214,9 +183,44 @@
           font-size: 10px;
         }
       }
+      .sign-in-screen {
+        position: absolute;
+        z-index: 1;
+        height: $chat-box-height - 50px;
+        width: $chat-box-width;
+        background: whitesmoke;
+        .container {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 200px;
+          padding: 10px;
+          margin-top: 60px;
+          button {
+            margin-top: 40px;
+          }
+          textarea {
+            resize: none;
+          }
+          label {
+            color: gray;
+            font-weight: bold;
+            font-size: 10px;
+            padding: 2px;
+          }
+        }
+        .error-alert {
+          border: 2px solid #990000;
+          color: red;
+          font-size: 10px;
+          padding: 0 10px 0 10px;
+        }
+      }
     }
+
     .chat-controls-container {
-      align-self: end;
+      grid-area: chat-action-footer;
+
       border-top: 1px solid lightgray;
       box-shadow: 0px 10px 12px lightgray;
       .chat-controls {
