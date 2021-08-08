@@ -4,6 +4,8 @@
 
   import { afterUpdate, onMount } from "svelte";
   import { currentUser, loadChat, dispatch, receive } from "../../api/message";
+  export let onChatClose;
+  export let onChatMinimize;
   let activeMessages: Message[] = [];
   let message = "";
   let textarea: HTMLTextAreaElement;
@@ -63,8 +65,8 @@
       <p>Powered by featherbeak</p>
     </div>
     <div>
-      <button>-</button>
-      <button>x</button>
+      <button on:click={() => onChatMinimize()} title="minimize">-</button>
+      <button on:click={() => onChatClose()} title="close">x</button>
     </div>
   </div>
 

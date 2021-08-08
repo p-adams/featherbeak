@@ -12,13 +12,19 @@
     // otherwise, start a new chat session
     show = !show;
   }
-  function closeChat() {}
-  function minimizeChat() {}
+  function closeChat() {
+    // hide chat window and kill active session
+    show = false;
+  }
+  function minimizeChat() {
+    // hide chat window and keep active session alive
+    show = false;
+  }
 </script>
 
 <div class="live-chat-container">
   {#if show}
-    <ChatBox />
+    <ChatBox onChatClose={closeChat} onChatMinimize={minimizeChat} />
   {/if}
 
   <ChatFab onFabClick={showChat} />
