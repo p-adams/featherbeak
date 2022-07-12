@@ -1,5 +1,4 @@
 <script lang="ts">
-  import SupportDashboard from "./lib/Dashboard/SupportDashboard.svelte";
   import LiveChat from "./lib/LiveChat/LiveChat.svelte";
 </script>
 
@@ -7,7 +6,6 @@
   <section>
     <h3>ChatBox Demo</h3>
   </section>
-  <SupportDashboard />
   <LiveChat />
 </main>
 

@@ -71,6 +71,7 @@
   </div>
 
   <div class="chat-window">
+    <!--  TODO: enable 0 login  -->
     {#if false}
       <div class="sign-in-screen">
         {#if signInFailed}
